@@ -19,10 +19,10 @@ export default function Login(props) {
     axiosWithAuth()
       .post('/api/login', credentials)
       .then((res) => {
-        window.localStorage.setItem('token', res.data.payload);
+        localStorage.setItem('token', res.data.payload);
         setFriends([]);
         getFriends();
-        props.history.push('/friends');
+        this.props.history.push('/friends');
       })
       .catch((err) => {
         console.log(err);
@@ -47,7 +47,7 @@ export default function Login(props) {
           value={credentials.password}
           onChange={handleChange}
         />
-        <button onClick={login}>Log in</button>
+        <button>Log in</button>
       </form>
     </div>
   );
